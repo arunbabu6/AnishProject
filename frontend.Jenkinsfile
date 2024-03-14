@@ -76,6 +76,7 @@ pipeline {
                     unstash 'frontendaneesh-src'
                     dir('frontend/studio-ghibli') {
                         // Assuming the build commands are here [ @Chandan verify this]
+                        sh 'cp .env /frontend/studio-ghibli/'
                         sh 'npm install'
                         sh 'npm run build'
                         // Stash the build artifacts, excluding the node_modules directory
@@ -268,5 +269,3 @@ pipeline {
         }
     }
 }
-
-
