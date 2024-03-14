@@ -152,7 +152,7 @@ pipeline {
                         sshagent(['jenkinaccess']) {
                             // Clear the 'artifacts' directory on the Docker host
                             sh "ssh ab@host.docker.internal 'rm -rf ${PROJECT_DIR}/artifacts2/*'"
-                            sh "scp -rp artifacts/* ab@host.docker.internal:${PROJECT_DIR}/artifacts2/"
+                            sh "scp -rp artifacts2/* ab@host.docker.internal:${PROJECT_DIR}/artifacts2/"
                             // Build the Docker image on the Docker host
                             sh "ssh ab@host.docker.internal 'cd ${PROJECT_DIR} && docker build -t ${env.DOCKER_IMAGE}-frontend-aneesh:${env.ENVIRONMENT.toLowerCase()}-${env.BUILD_NUMBER} .'"
                         }
